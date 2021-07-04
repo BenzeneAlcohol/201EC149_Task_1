@@ -337,7 +337,7 @@
 	  message: "Object ID invalid"}` <br />
 
 * **Required Filed**
-    * **Auth Required : True**
+    * **Auth Required : False**
 
 <br>
 <br>
