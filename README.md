@@ -311,7 +311,7 @@
 <br>
 <br>
 
-**1. Dashboard - Get all posts made by user**
+**2. Get all posts made by user**
 * **URL**
     `/api/user/:id`
 
