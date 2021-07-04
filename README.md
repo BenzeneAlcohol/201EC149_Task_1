@@ -310,3 +310,34 @@
 
 <br>
 <br>
+
+**1. Dashboard - Get all posts made by user**
+* **URL**
+    `/api/user/:id`
+
+* **METHOD**
+    `GET`
+	
+* **URL params**
+   `id`
+
+* **Success Response**<br />
+    * **Code:** `200` <br />
+      **data:** `{user with that ID}`
+
+* **Error Response**
+    * **Code:** `500` <br />
+      **Message:** `{success: false,
+	  message: error.message}` <br />
+    * **Code:** `206` <br />
+      **Message:** `{success: false,
+	  message: "user not found"}` <br />
+    * **Code:** `401` <br />
+      **Message:** `{success: false,
+	  message: "Object ID invalid"}` <br />
+
+* **Required Filed**
+    * **Auth Required : True**
+
+<br>
+<br>
