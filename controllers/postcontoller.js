@@ -17,7 +17,10 @@ exports.createPost = async (req,res,next)=>{
     await user.save();
     return res.status(201).json(post);
 }catch(error){
-    console.log(error);
+    res.status(500).json({
+        success: false,
+        error: err.message
+    })
 }
 }
 
@@ -39,7 +42,10 @@ exports.displayOnePost = async (req,res,next)=>{
         }
         res.status(200).json(post);
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        })
     }
 } //Displaying one specific post
 
@@ -70,7 +76,10 @@ exports.updatePostbyID = async(req,res,next)=>{
             message: "Post has been updated successfully"
         });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        })
     }
 }//Only the post creator can update the post.
 
@@ -89,6 +98,7 @@ exports.displayAllPosts = async (req,res,next)=>{
 exports.displayPostsbyTag = async(req,res,next)=>{
     try {
         const tags = req.query.tag;
+        console.log(tags);
         const posts = await Post.find({tags: {$all: tags}})
         console.log(posts.length);
         if(posts.length==0){
@@ -145,6 +155,9 @@ exports.deletePost = async (req,res,next)=>{
             })
         }
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            error: err.message
+        })
     }
 }
