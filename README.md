@@ -11,7 +11,7 @@
 * config: Holds the mongoose.js file where the connection between the server and mongoDB is establihsed.
 * controllers: Has all the functions that will be fired on accessing a specific route.
 * middlware: Has the authentication middleware that will authenticate the user and allow access to private routes as well as store which user is accessing the route.
-* models: Has the Mongoose Schema of the User and the Poll, which has all the required functions and database fields.
+* models: Has the Mongoose Schema of the User and the Post, which has all the required functions and database fields.
 * routes: Has the express router whcih redirects specific routes to specific controllers which will be fired on accessing those routes.
 
 # Features
