@@ -10,6 +10,8 @@ Link to the repo: https://github.com/BenzeneAlcohol/201EC149_Task_1
 5. type `nodemon index.js`
 6. The server should be up and running at port 5000. MongoDB connected would appear in the terminal to show that DB has been connected.
 
+`**NOTE**: When trying to use authorization API, you need to send the header as: "Bearer ${authToken}" Where authToken is the token you get once you sign-in/register.`
+
 # Folder setup
 * config: Holds the mongoose.js file where the connection between the server and mongoDB is establihsed.
 * controllers: Has all the functions that will be fired on accessing a specific route.
