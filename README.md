@@ -1,3 +1,6 @@
+Link to the repo: https://github.com/BenzeneAlcohol/201EC149_Task_1
+
+
 # Installation
 1. Clone the repository using 
 `git clone https://github.com/BenzeneAlcohol/201EC149_Task_1.git`
