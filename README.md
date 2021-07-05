@@ -243,7 +243,7 @@ Link to the repo: https://github.com/BenzeneAlcohol/201EC149_Task_1
 **8.  Like a specific post**
 
 * **URL**
-    `/api/posts/like/:id`
+    `/api/post/like/:id`
 
 * **METHOD**
     `POST`
