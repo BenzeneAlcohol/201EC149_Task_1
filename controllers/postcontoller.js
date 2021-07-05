@@ -161,3 +161,46 @@ exports.deletePost = async (req,res,next)=>{
         })
     }
 }
+
+exports.likePost = async (req,res,next)=>{
+    try {
+        const user = req.user;
+        const userID = req.user._id;
+        const {id} = req.params;
+        if(!ObjectID.isValid(id)){
+            return res.status(401).json({
+                success: false,
+                message: "Object ID invalid"
+            })
+        }
+        const post = await Post.findById(id);
+        if(!post){
+            return res.status(401).json({
+                success: false,
+                message: "Post not found"
+            })
+        }
+        console.log(post.user);
+        if ((post.liked.filter(user => user.toString() === userID.toString()).length) <= 0 && post.user.toString()!=userID.toString()) //What filter does is, it returns an array that meets the conditions that were specific inside the filter method. Here, the condition was whether the userID already existed. If it existed, it would return an array with that ID alone, which would make the length more than 0. Hence, it means the user already liked. Also, we are checking whether it is the user who created the post, liking the post.
+        {
+            post.liked.push(userID);
+            post.likes = post.likes + 1;
+            await post.save();
+            return res.status(201).json({
+                success: true,
+                post
+            });
+        }
+        else{
+            res.status(400).json({
+                success: false,
+                message: "You have already liked once or are the creator of this post"
+            })
+        }
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}

@@ -21,11 +21,12 @@ Link to the repo: https://github.com/BenzeneAlcohol/201EC149_Task_1
 * Authentication through jwt tokens, highly secure. 
 * bcryptjs used for hashing the password and saving it in database, only the hashed password is saved in the database, hence real password is never visible to database admin.
 * All the CRUD operations are possible in this blog including a lot of additional features.
-* Searching for specific tags and title is available.
+* Searching using specific tags and title is available.
 * Creation, Deletion and Updation require authorization and are protected by a middleware.
+* A user can like a post only once, and cannot like a post that he has created. Authentication middleware controls this.
 
 # Routes
-* `/api/auth` : Authentication route, used for login and registering.
+* `/api/auth`: Authentication route, used for login and registering.
 * `/api/post`: All the APIs related to CRUD and other operations of posts will happen here
 * `/api/user`: user related API such as posts created by the signed-in user.
 
@@ -238,6 +239,39 @@ Link to the repo: https://github.com/BenzeneAlcohol/201EC149_Task_1
      * **Auth Need : True**
 <br/>
 <br/>
+
+**8.  Like a specific post**
+
+* **URL**
+    `/api/polls/vote/:id`
+
+* **METHOD**
+    `POST`
+	
+	`**NOTE**: in the headers you have to authorize token and you can get token by signin API`
+
+* **URL params**
+    `particular post id`
+
+* **Success Response**<br />
+    * **Code:** `200` <br />
+      **data:** `{"success": true, post}`
+
+* **Error Response** 
+    * **Code:** `401` <br />
+      **Message:** `Object ID invalid` <br />
+    * **Code:** `401` <br />
+      **Message:** `post not found` <br />
+    * **Code:** `400` <br />
+      **Message:** `{"success": false, "message": "You have already liked once or are the creator of this post" }` <br />
+    * **Code:** `400` <br />
+      **Message:** `{"success": false, "message": error.message }` <br />
+
+* **Required Filed**
+    * **Auth Required : True**
+ <br>
+ <br>
+ 
 
 ## APIs related to Authentication
 **1. Signup for the user**
